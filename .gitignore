@@ -1,0 +1,47 @@
+*.py[cod]
+__pycache__
+
+# C extensions
+*.so
+
+# Packages
+*.egg
+*.eggs
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+
+# Translations
+*.mo
+
+# OS
+.DS_Store
+
+# Vim
+*.sw*
+
+# Jetbrains
+*.iml
+
+# Git
+*.diff
+*.patch
+
+test.py
