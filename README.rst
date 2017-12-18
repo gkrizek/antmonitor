@@ -92,7 +92,11 @@ The options include:
 
   - ``temp``: Notify if it reaches this temperature [default is 90]
 
-  - ````:
+  - ``memory``: Notify if Free Memory is less than this percent [default is 10]
+
+  - ``pool``: Notify if active pool is other than this pool URL.
+
+  - ``hashes``: Notify if the GH/s is less than this number
 
 *Example Configuration:*
 
