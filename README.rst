@@ -1,6 +1,6 @@
-===
+
 antmonitor
-===
+==========
 
 .. image:: https://img.shields.io/pypi/v/antmonitor.svg
     :target: https://pypi.python.org/pypi/antmonitor
@@ -73,15 +73,15 @@ The options include:
 
 - ``aws``
 
-    - ``key``: AWS Access Key ID for SNS Publishing
+-- ``key``: AWS Access Key ID for SNS Publishing
 
-    - ``secret``: AWS Access Secret Key for SNS Publishing
+-- ``secret``: AWS Access Secret Key for SNS Publishing
 
 - ``antminer``
 
-    - ``username``: Username to the Antminer's UI
+-- ``username``: Username to the Antminer's UI
 
-    - ``password``: Password to the Antminer's UI
+-- ``password``: Password to the Antminer's UI
 
 **alert**:
 
