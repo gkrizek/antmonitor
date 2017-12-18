@@ -64,40 +64,42 @@ Configuration
 Antmonitor looks for a configuration file in your home directory called ``.antmonitor.cfg``.
 This file is where you will set up which miners to monitor, whether to alert, your credentials, and much more.
 The options include:
+::
 
-**miners**
+    miners:
 
-- ``antminers``: List of Antminer's IPs or hostnames to monitor
+      - antminers: List of Antminer's IPs or hostnames to monitor
 
-**credential**
+    credentials
 
-- ``aws``
+      - aws:
 
--- ``key``: AWS Access Key ID for SNS Publishing
+        - key: AWS Access Key ID for SNS Publishing
 
--- ``secret``: AWS Access Secret Key for SNS Publishing
+        - secret: AWS Access Secret Key for SNS Publishing
 
-- ``antminer``
+      - antminer:
 
--- ``username``: Username to the Antminer's UI
+        - username: Username to the Antminer's UI
 
--- ``password``: Password to the Antminer's UI
+        - password: Password to the Antminer's UI
 
-**alert**:
+    alert:
 
-- ``notify``: Boolean for whether to notify on alert
+      - notify: Boolean for whether to notify on alert
 
-- ``snstopic``: SNS Topic ARN to send an alert to
+      - snstopic: SNS Topic ARN to send an alert to
 
-**threshold**:
+    threshold:
 
-- ``temp``: Notify if it reaches this temperature [default is 90]
+      - temp: Notify if it reaches this temperature [default is 90]
 
-- ``memory``: Notify if Free Memory is less than this percent [default is 10]
+      - memory: Notify if Free Memory is less than this percent [default is 10]
 
-- ``pool``: Notify if active pool is other than this pool URL.
+      - pool: Notify if active pool is other than this pool URL.
 
-- ``hashes``: Notify if the GH/s is less than this number
+      - hashes: Notify if the GH/s is less than this number
+
 
 *Example Configuration:*
 
