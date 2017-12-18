@@ -1,3 +1,4 @@
+===
 antmonitor
 ===
 
@@ -20,7 +21,7 @@ check things like temperature, fan speed, GH/s, ASIC status, and more. Antmonito
 ability to notify you via Email, SMS, or Webhook (via AWS SNS) if any of these metrics leaves a given threshold.
 You can easily setup continuous monitoring by creating a cron job to execute this CLI tool.
 
-_This was written specifically for the Antminer S9, but should work with most other Antminers._
+*This was written specifically for the Antminer S9, but should work with most other Antminers.*
 
 Installation
 ------------
@@ -49,10 +50,10 @@ Usage
       memory    Check if free memory is below certain percentage
       pool      Check if Pool 1 is what you expect it to be    # should we have a check to see which one is the active pool and notify if different?
       hashes    Check if number of GH/s is below certain number
-      asic      Checks the ASIC status if any ``o`` are ``x``
+      asic      Checks the ASIC status if any `o` are `x`
       all       Run all checks
     Options:
-      --alert   Sends an alert to the SNS Topic if it is configured and regardless of your ``.antmonitor.cfg`` parameters.
+      --alert   Sends an alert to the SNS Topic if it is configured and regardless of your `.antmonitor.cfg` parameters.
       --quiet   Don't log anything.
 
 After each check, you can either specify the threshold value or it will attempt to read it from your ``.antmonitor.cfg`` file.
@@ -64,39 +65,39 @@ Antmonitor looks for a configuration file in your home directory called ``.antmo
 This file is where you will set up which miners to monitor, whether to alert, your credentials, and much more.
 The options include:
 
-**``miners``**
+**miners**
 
-  - ``antminers``: List of Antminer's IPs or hostnames to monitor
+- ``antminers``: List of Antminer's IPs or hostnames to monitor
 
-**``credentials``**
+**credential**
 
-  - ``aws``
+- ``aws``
 
-      - ``key``: AWS Access Key ID for SNS Publishing
+    - ``key``: AWS Access Key ID for SNS Publishing
 
-      - ``secret``: AWS Access Secret Key for SNS Publishing
+    - ``secret``: AWS Access Secret Key for SNS Publishing
 
-  - ``antminer``
+- ``antminer``
 
-      - ``username``: Username to the Antminer's UI
+    - ``username``: Username to the Antminer's UI
 
-      - ``password``: Password to the Antminer's UI
+    - ``password``: Password to the Antminer's UI
 
-**``alert``**:
+**alert**:
 
-  - ``notify``: Boolean for whether to notify on alert
+- ``notify``: Boolean for whether to notify on alert
 
-  - ``snstopic``: SNS Topic ARN to send an alert to
+- ``snstopic``: SNS Topic ARN to send an alert to
 
-**``threshold``**:
+**threshold**:
 
-  - ``temp``: Notify if it reaches this temperature [default is 90]
+- ``temp``: Notify if it reaches this temperature [default is 90]
 
-  - ``memory``: Notify if Free Memory is less than this percent [default is 10]
+- ``memory``: Notify if Free Memory is less than this percent [default is 10]
 
-  - ``pool``: Notify if active pool is other than this pool URL.
+- ``pool``: Notify if active pool is other than this pool URL.
 
-  - ``hashes``: Notify if the GH/s is less than this number
+- ``hashes``: Notify if the GH/s is less than this number
 
 *Example Configuration:*
 
@@ -123,10 +124,17 @@ The options include:
     "alert": {
       "notify": true,
       "snstopic": "arn:aws:sns:us-west-2:800101111111:antminer-email"
+    },
+    "threshold": {
+      "temp": "85",
+      "memory": "5",
+      "pool": "youpoolurl",
+      "hashes": "12000"
     }
   }
 
----
+
+------------
 
 `Example Commands <./EXAMPLES.md>`__
 
