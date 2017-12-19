@@ -1,10 +1,13 @@
 import click
 import os
 import json
-import re
 
 
 def Validate():
+    command = click.get_current_context().invoked_subcommand
+    if command == "config":
+        return
+
     """
     Check if .antmonitor.cfg exists
     """
@@ -114,3 +117,43 @@ def Validate():
             raise click.BadParameter('hashes\n\nThreshold of \'hashes\' must be an integer\nPlease add this section to your \'~/.antmonitor.cfg\'')
     except KeyError:
         raise click.BadParameter('hashes\n\nYou haven\'t specified any \'hashes\' threshold settings\nPlease add this section to your \'~/.antmonitor.cfg\'')
+    return
+
+def CreateConfig(Miners, Key, Secret, Username, Password, Notify, SNS, Temp, Mem, Pool, Hashes):
+    miners = Miners.split(',')
+    if Notify:
+        notify = "true"
+    else:
+        notify = "false"
+    config = {
+        "miners": {
+            "antminers": miners
+        },
+        "credentials": {
+          "aws": {
+            "key": Key,
+            "secret": Secret
+          },
+          "antminer": {
+            "username": Username,
+            "password": Password
+          }
+        },
+        "alert": {
+          "notify": notify,
+          "snstopic": SNS
+        },
+        "threshold": {
+          "temp": Temp,
+          "memory": Mem,
+          "pool": Pool,
+          "hashes": Hashes
+        }
+    }
+    try:
+        config_path = os.path.join(os.path.expanduser('~'),'.antmonitor.cfg')
+        config_file = open(config_path,'w')
+        config_file.write(json.dumps(config, indent=True, sort_keys=True))
+        return "~/.antmonitor.cfg was successfully updated"
+    except Exception:
+        return "There was a problem writing ~/.antmonitor.cfg"

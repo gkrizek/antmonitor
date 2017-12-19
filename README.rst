@@ -45,17 +45,25 @@ Usage
 
 ::
 
-    Checks:
-      temp      Check the temperature is above given temp
-      memory    Check if free memory is below certain percentage
-      pool      Check if Pool 1 is what you expect it to be    # should we have a check to see which one is the active pool and notify if different?
-      hashes    Check if number of GH/s is below certain number
-      asic      Checks the ASIC status if any `o` are `x`
-      all       Run all checks
+    Usage: antmonitor [OPTIONS] COMMAND
+
+      Antmonitor - Monitor your Antminer devices
+
     Options:
-      --alert   Sends an alert to the SNS Topic if it is configured and regardless of your `.antmonitor.cfg` parameters.
-      --quiet   Don't log anything.
-      --cron    Cron setting. If this is set, it will only log threshold breaches.
+      -a, --alert  Send an alert if threshold is passed
+      -c, --cron   Only log if a threshold is passed
+      -q, --quiet  Don't log anything
+      --help       Show this message and exit.
+
+    Commands:
+      all     Run all checks
+      asic    Checks the ASIC status if any `o` are `x`
+      config  Creates a ~/.antmonitor.cfg file
+      hashes  Check if number of GH/s is below certain number
+      memory  Check if free memory is below certain percentage
+      pool    Check if Active Pool is what you expect it to be
+      temp    Check the temperature is above given temp
+
 
 After each check, you can either specify the threshold value or it will attempt to read it from your ``.antmonitor.cfg`` file.
 
