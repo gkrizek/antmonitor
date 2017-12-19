@@ -11,6 +11,10 @@ def main(alert, cron, quiet):
     """
     Antmonitor - Monitor your Antminer devices
     """
+    context = click.get_current_context()
+    context.meta['alert'] = alert
+    context.meta['cron'] = cron
+    context.meta['quiet'] = quiet
     Validate()
 
 @main.command('temp', short_help="Check the temperature is above given temp")
