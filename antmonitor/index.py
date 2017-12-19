@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+
+from utils import Validate
 import click
 
 @click.group()
@@ -8,7 +11,7 @@ def main(alert, cron, quiet):
     """
     Antmonitor - Monitor your Antminer devices
     """
-    click.echo('Alert is: ' + str(alert))
+    Validate()
 
 @main.command('temp', short_help="Check the temperature is above given temp")
 def temp():
