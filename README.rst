@@ -55,6 +55,7 @@ Usage
     Options:
       --alert   Sends an alert to the SNS Topic if it is configured and regardless of your `.antmonitor.cfg` parameters.
       --quiet   Don't log anything.
+      --cron    Cron setting. If this is set, it will only log threshold breaches.
 
 After each check, you can either specify the threshold value or it will attempt to read it from your ``.antmonitor.cfg`` file.
 
