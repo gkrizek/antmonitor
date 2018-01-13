@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from utils import Validate, CreateConfig
+from alert import SendAlert
 import click
 
 @click.group()
@@ -19,7 +20,8 @@ def main(alert, cron, quiet):
 
 @main.command('temp', short_help="Check the temperature is above given temp")
 def temp():
-    click.echo('temp')
+    result = SendAlert("hello")
+    click.echo(result)
 
 @main.command('memory', short_help="Check if free memory is below certain percentage")
 def memory():
