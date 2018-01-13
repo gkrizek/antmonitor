@@ -19,5 +19,5 @@ setup(
         "boto3",
         "requests"
     ],
-    keywords="antminer bitcoin bitmain monitor btc bch cash"
+    keywords="antminer bitcoin bitmain monitor btc bch cash crypto cryptocurrency"
 )
