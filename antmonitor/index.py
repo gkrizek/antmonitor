@@ -2,6 +2,7 @@
 
 from utils import Validate, CreateConfig
 from alert import SendAlert
+from check import TempCheck, MemoryCheck, PoolCheck, HashCheck, AsicCheck, AllCheck
 import click
 
 @click.group()
@@ -20,28 +21,33 @@ def main(alert, cron, quiet):
 
 @main.command('temp', short_help="Check the temperature is above given temp")
 def temp():
-    result = SendAlert("hello")
+    result = TempCheck()
     click.echo(result)
 
 @main.command('memory', short_help="Check if free memory is below certain percentage")
 def memory():
-    click.echo('memory')
+    result = MemoryCheck()
+    click.echo(result)
 
 @main.command('pool', short_help="Check if Active Pool is what you expect it to be")
 def pool():
-    click.echo('pool')
+    result = PoolCheck()
+    click.echo(result)
 
 @main.command('hashes', short_help="Check if number of GH/s is below certain number")
 def hashes():
-    click.echo('hashes')
+    result = HashCheck()
+    click.echo(result)
 
 @main.command('asic', short_help="Checks the ASIC status if any `o` are `x`")
 def asic():
-    click.echo('asic')
+    result = AsicCheck()
+    click.echo(result)
 
 @main.command('all', short_help="Run all checks")
 def all():
-    click.echo('all')
+    result = AllCheck()
+    click.echo(result)
 
 @main.command('config', short_help="Creates a ~/.antmonitor.cfg file")
 def config():
