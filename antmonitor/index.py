@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
-from utils import Validate, CreateConfig
+from utils import CreateConfig, GetConfig, GetMiners, Validate
 from alert import SendAlert
-from check import TempCheck, MemoryCheck, PoolCheck, HashCheck, AsicCheck, AllCheck
+from check import AllCheck, AsicCheck, HashCheck, MemoryCheck, PoolCheck, TempCheck
 import click
 
 @click.group()
@@ -21,33 +21,45 @@ def main(alert, cron, quiet):
 
 @main.command('temp', short_help="Check the temperature is above given temp")
 def temp():
-    result = TempCheck()
-    click.echo(result)
+    miners = GetMiners()
+    for m in miners:
+        result = TempCheck()
+        click.echo(str(m) + " - " + result)
 
 @main.command('memory', short_help="Check if free memory is below certain percentage")
 def memory():
-    result = MemoryCheck()
-    click.echo(result)
+    miners = GetMiners()
+    for m in miners:
+        result = MemoryCheck()
+        click.echo(str(m) + " - " + result)
 
 @main.command('pool', short_help="Check if Active Pool is what you expect it to be")
 def pool():
-    result = PoolCheck()
-    click.echo(result)
+    miners = GetMiners()
+    for m in miners:
+        result = PoolCheck()
+        click.echo(str(m) + " - " + result)
 
 @main.command('hashes', short_help="Check if number of GH/s is below certain number")
 def hashes():
-    result = HashCheck()
-    click.echo(result)
+    miners = GetMiners()
+    for m in miners:
+        result = HashCheck()
+        click.echo(str(m) + " - " + result)
 
 @main.command('asic', short_help="Checks the ASIC status if any `o` are `x`")
 def asic():
-    result = AsicCheck()
-    click.echo(result)
+    miners = GetMiners()
+    for m in miners:
+        result = AsicCheck()
+        click.echo(str(m) + " - " + result)
 
 @main.command('all', short_help="Run all checks")
 def all():
-    result = AllCheck()
-    click.echo(result)
+    miners = GetMiners()
+    for m in miners:
+        result = AllCheck()
+        click.echo(str(m) + " - " + result)
 
 @main.command('config', short_help="Creates a ~/.antmonitor.cfg file")
 def config():

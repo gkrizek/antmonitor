@@ -63,6 +63,13 @@ def GetConfig(Field):
         raise click.UsageError('No such file: \'~/.antmonitor.cfg\'\nPlease make sure it exists and has proper permissions\nYou can create one by running \'antmonitor config\'')
 
 
+def GetMiners():
+    try:
+        miners = GetConfig('miners,antminers')
+    except KeyError as e:
+        raise click.UsageError('Configuration Failure\nCould not find miners')
+    return miners
+
 
 def Validate():
     """
