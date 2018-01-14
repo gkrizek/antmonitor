@@ -4,7 +4,7 @@ import sys
 import click
 
 
-def TempCheck():
+def TempCheck(Miner):
     """
     Get Temp Value
     """
@@ -22,17 +22,17 @@ def TempCheck():
         if cli_quiet:
             sys.exit(1)
         else:
-            alert = "Temperate too high. Received " + str(temp) + "."
+            alert = "Temperate too high for " + Miner + ". Received " + str(temp) + "."
             #SendAlert(alert)
             return alert
     else:
         if cli_cron or cli_quiet:
             return
         else:
-            return "Temperature is ok. Received " + str(temp) + "."
+            return "Temperature is OK for " + Miner + ". Received " + str(temp) + "."
 
 
-def MemoryCheck():
+def MemoryCheck(Miner):
     """
     Get Memory Value
     """
@@ -50,17 +50,17 @@ def MemoryCheck():
         if cli_quiet:
             sys.exit(1)
         else:
-            alert = "Free Memory is too low. Received " + str(temp) + "%."
+            alert = "Free Memory is too low for " + Miner + ". Received " + str(temp) + "%."
             #SendAlert(alert)
             return alert
     else:
         if cli_cron or cli_quiet:
             return
         else:
-            return "Free Memory is ok. Received " + str(temp) + "."
+            return "Free Memory is OK for " + Miner + ". Received " + str(temp) + "."
 
 
-def PoolCheck():
+def PoolCheck(Miner):
     """
     Get Pool Value
     """
@@ -78,17 +78,17 @@ def PoolCheck():
         if cli_quiet:
             sys.exit(1)
         else:
-            alert = "Active Pool is not the desired pool. Received " + str(temp) + "."
+            alert = "Active Pool is not the desired pool for " + Miner + ". Received " + str(temp) + "."
             #SendAlert(alert)
             return alert
     else:
         if cli_cron or cli_quiet:
             return
         else:
-            return "Active Pool is ok. Received " + str(temp) + "."
+            return "Active Pool is OK for " + Miner + ". Received " + str(temp) + "."
 
 
-def HashCheck():
+def HashCheck(Miner):
     """
     Get Hash Value
     """
@@ -106,17 +106,17 @@ def HashCheck():
         if cli_quiet:
             sys.exit(1)
         else:
-            alert = "GH/s is low. Received " + str(hashes) + "."
+            alert = "GH/s is low for " + Miner + ". Received " + str(hashes) + "."
             #SendAlert(alert)
             return alert
     else:
         if cli_cron or cli_quiet:
             return
         else:
-            return "GH/s is ok. Received " + str(hashes) + "."
+            return "GH/s is OK for " + Miner + ". Received " + str(hashes) + "."
 
 
-def AsicCheck():
+def AsicCheck(Miner):
     """
     Get ASIC Value
     """
@@ -130,25 +130,25 @@ def AsicCheck():
         if cli_quiet:
             sys.exit(1)
         else:
-            alert = "Hashboard issue. Received " + str(asic) + "."
+            alert = "Hashboard issue for " + Miner + ". Received " + str(asic) + "."
             #SendAlert(alert)
             return alert
     else:
         if cli_cron or cli_quiet:
             return
         else:
-            return "Hashboards are ok. Received " + str(asic) + "."
+            return "Hashboards are OK for " + Miner + ". Received " + str(asic) + "."
 
 
-def AllCheck():
-    temp = TempCheck()
+def AllCheck(Miner):
+    temp = TempCheck(Miner)
     print(temp)
-    memory = MemoryCheck()
+    memory = MemoryCheck(Miner)
     print(memory)
-    pool = PoolCheck()
+    pool = PoolCheck(Miner)
     print(pool)
-    hashes = HashCheck()
+    hashes = HashCheck(Miner)
     print(hashes)
-    asic = AsicCheck()
+    asic = AsicCheck(Miner)
     print(asic)
     return "\n---\nCompleted all checks"
