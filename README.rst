@@ -147,7 +147,7 @@ The options include:
 
 ------------
 
-`Example Commands <./EXAMPLES.md>`__
+`Example Commands <./EXAMPLE.md>`__
 
 Notes
 -----
