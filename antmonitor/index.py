@@ -24,42 +24,49 @@ def temp():
     miners = GetMiners()
     for m in miners:
         result = TempCheck(m)
-        click.echo(result)
+        if result:
+            click.echo(result)
+
 
 @main.command('memory', short_help="Check if free memory is below certain percentage")
 def memory():
     miners = GetMiners()
     for m in miners:
         result = MemoryCheck(m)
-        click.echo(result)
+        if result:
+            click.echo(result)
 
 @main.command('pool', short_help="Check if Active Pool is what you expect it to be")
 def pool():
     miners = GetMiners()
     for m in miners:
         result = PoolCheck(m)
-        click.echo(result)
+        if result:
+            click.echo(result)
 
 @main.command('hashes', short_help="Check if number of GH/s is below certain number")
 def hashes():
     miners = GetMiners()
     for m in miners:
         result = HashCheck(m)
-        click.echo(result)
+        if result:
+            click.echo(result)
 
 @main.command('asic', short_help="Checks the ASIC status if any `o` are `x`")
 def asic():
     miners = GetMiners()
     for m in miners:
         result = AsicCheck(m)
-        click.echo(result)
+        if result:
+            click.echo(result)
 
 @main.command('all', short_help="Run all checks")
 def all():
     miners = GetMiners()
     for m in miners:
         result = AllCheck(m)
-        click.echo(result)
+        if result:
+            click.echo(result)
 
 @main.command('config', short_help="Creates a ~/.antmonitor.cfg file")
 def config():

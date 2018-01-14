@@ -50,14 +50,14 @@ def MemoryCheck(Miner):
         if cli_quiet:
             sys.exit(1)
         else:
-            alert = "Free Memory is too low for " + Miner + ". Received " + str(temp) + "%."
+            alert = "Free Memory is too low for " + Miner + ". Received " + str(memory) + "%."
             #SendAlert(alert)
             return alert
     else:
         if cli_cron or cli_quiet:
             return
         else:
-            return "Free Memory is OK for " + Miner + ". Received " + str(temp) + "."
+            return "Free Memory is OK for " + Miner + ". Received " + str(memory) + "."
 
 
 def PoolCheck(Miner):
@@ -78,14 +78,14 @@ def PoolCheck(Miner):
         if cli_quiet:
             sys.exit(1)
         else:
-            alert = "Active Pool is not the desired pool for " + Miner + ". Received " + str(temp) + "."
+            alert = "Active Pool is not the desired pool for " + Miner + ". Received " + str(pool) + "."
             #SendAlert(alert)
             return alert
     else:
         if cli_cron or cli_quiet:
             return
         else:
-            return "Active Pool is OK for " + Miner + ". Received " + str(temp) + "."
+            return "Active Pool is OK for " + Miner + ". Received " + str(pool) + "."
 
 
 def HashCheck(Miner):
@@ -151,4 +151,4 @@ def AllCheck(Miner):
     print(hashes)
     asic = AsicCheck(Miner)
     print(asic)
-    return "\n---\nCompleted all checks"
+    return "---"
