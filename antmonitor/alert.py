@@ -36,5 +36,5 @@ def SendAlert(Message):
                 Subject='Antmonitor Alert'
             )
             return response['MessageId']
-        except:
+        except Exception as e:
             raise click.UsageError('There was a problem sending an alert')
