@@ -17,9 +17,10 @@ def SendAlert(Message):
         raise click.UsageError('Configuration Failure\nCould not find AWS Credential setting')
 
     import boto3
-    sns = boto3.client('sns',
-            aws_access_key_id=config_aws_key,
-            aws_secret_access_key=config_aws_secret
+    sns = boto3.client(
+        'sns',
+        aws_access_key_id=config_aws_key,
+        aws_secret_access_key=config_aws_secret
     )
 
     if config_notification or cli_notificaiton:

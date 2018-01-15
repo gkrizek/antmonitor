@@ -15,24 +15,24 @@ def CreateConfig(Miners, Key, Secret, Username, Password, Notify, SNS, Temp, Mem
             "antminers": miners
         },
         "credentials": {
-          "aws": {
-            "key": Key,
-            "secret": Secret
-          },
-          "antminer": {
-            "username": Username,
-            "password": Password
-          }
+            "aws": {
+                "key": Key,
+                "secret": Secret
+            },
+            "antminer": {
+                "username": Username,
+                "password": Password
+            }
         },
         "alert": {
-          "notify": notify,
-          "snstopic": SNS
+            "notify": notify,
+            "snstopic": SNS
         },
         "threshold": {
-          "temp": Temp,
-          "memory": Mem,
-          "pool": Pool,
-          "hashes": Hashes
+            "temp": Temp,
+            "memory": Mem,
+            "pool": Pool,
+            "hashes": Hashes
         }
     }
     try:
