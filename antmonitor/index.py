@@ -105,7 +105,3 @@ def config():
         Hashes=hashes
     )
     click.echo(creation)
-
-
-if __name__ == '__main__':
-    main()

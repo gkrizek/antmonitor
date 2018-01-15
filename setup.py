@@ -21,5 +21,8 @@ setup(
         "click",
         "requests"
     ],
+    entry_points={
+        "console_scripts": ['antmonitor = antmonitor.index:main']
+    },
     keywords="antminer bitcoin bitmain monitor btc bch cash crypto cryptocurrency"
 )
