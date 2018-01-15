@@ -32,7 +32,7 @@ jobs:
       - run:
           name: Run Tests
           command: |
-            pycodestyle --statistics --show-source .
+            pycodestyle --statistics --show-source . --ignore E501
 
 workflows:
   version: 2
