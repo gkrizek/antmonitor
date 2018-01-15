@@ -2,17 +2,41 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.6.1
+      - image: circleci/python:3.6.4
 
     steps:
       - checkout
 
       - run:
-          name: install dependencies
+          name: Install Dependencies
+          command: |
+            sudo python setup.py install
+
+      - run:
+          name: Run Tests
+          command: |
+            antmonitor --help
+
+  test:
+    docker:
+      - image: circleci/python:3.6.4
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install Dependencies
           command: |
             sudo pip install pycodestyle
 
       - run:
-          name: run tests
+          name: Run Tests
           command: |
-            pycodestyle .
+            pycodestyle --statistics --show-source .
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test
