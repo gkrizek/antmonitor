@@ -10,9 +10,9 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            sudo pip install pep8
+            sudo pip install pycodestyle
 
       - run:
           name: run tests
           command: |
-            pep8 .
+            pycodestyle .
