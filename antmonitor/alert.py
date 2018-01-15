@@ -1,7 +1,5 @@
 from utils import GetConfig
-import boto3
 import click
-sns = boto3.client('sns')
 
 
 def SendAlert(Message):
@@ -11,6 +9,18 @@ def SendAlert(Message):
         config_notification = GetConfig('alert,notify')
     except KeyError as e:
         raise click.UsageError('Configuration Failure\nCould not find Alert Notification setting')
+
+    try:
+        config_aws_key = GetConfig('credentials,aws,key')
+        config_aws_secret = GetConfig('credentials,aws,secret')
+    except KeyError as e:
+        raise click.UsageError('Configuration Failure\nCould not find AWS Credential setting')
+
+    import boto3
+    sns = boto3.client('sns',
+            aws_access_key_id=config_aws_key,
+            aws_secret_access_key=config_aws_secret
+    )
 
     if config_notification or cli_notificaiton:
         try:

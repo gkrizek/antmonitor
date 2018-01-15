@@ -128,8 +128,8 @@ The options include:
         "secret": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
       },
       "antminer": {
-        "username": "admin",
-        "password": "password"
+        "username": "root",
+        "password": "root"
       }
     },
     "alert": {

@@ -1,13 +1,12 @@
-from utils import GetConfig
 from alert import SendAlert
-import sys
 import click
+from request import GetContent
+import sys
+from utils import GetConfig
 
 
 def TempCheck(Miner):
-    """
-    Get Temp Value
-    """
+    content = GetContent(Miner, "stats")
     temp = 90
     try:
         config_temp = GetConfig('threshold,temp')
