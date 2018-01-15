@@ -18,6 +18,7 @@ setup(
     packages=["antmonitor"],
     install_requires=[
         "boto3",
+        "click",
         "requests"
     ],
     keywords="antminer bitcoin bitmain monitor btc bch cash crypto cryptocurrency"
