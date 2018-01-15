@@ -15,7 +15,7 @@ jobs:
       - run:
           name: Run Tests
           command: |
-            antmonitor/index.py --help
+            antmonitor --help
 
   test:
     docker:
