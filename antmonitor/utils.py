@@ -3,6 +3,7 @@ import os
 import json
 import os
 
+
 def CreateConfig(Miners, Key, Secret, Username, Password, Notify, SNS, Temp, Mem, Pool, Hashes):
     miners = Miners.split(',')
     if Notify:
@@ -35,8 +36,8 @@ def CreateConfig(Miners, Key, Secret, Username, Password, Notify, SNS, Temp, Mem
         }
     }
     try:
-        config_path = os.path.join(os.path.expanduser('~'),'.antmonitor.cfg')
-        config_file = open(config_path,'w')
+        config_path = os.path.join(os.path.expanduser('~'), '.antmonitor.cfg')
+        config_file = open(config_path, 'w')
         config_file.write(json.dumps(config, indent=True, sort_keys=True))
         return "~/.antmonitor.cfg was successfully updated"
     except Exception:
@@ -44,7 +45,7 @@ def CreateConfig(Miners, Key, Secret, Username, Password, Notify, SNS, Temp, Mem
 
 
 def GetConfig(Field):
-    file_path = os.path.join(os.path.expanduser('~'),'.antmonitor.cfg')
+    file_path = os.path.join(os.path.expanduser('~'), '.antmonitor.cfg')
     if os.path.isfile(file_path):
         try:
             config = json.load(open(os.path.join(file_path)))
@@ -82,9 +83,9 @@ def Validate():
     """
     Check if .antmonitor.cfg exists
     """
-    if os.path.isfile(os.path.join(os.path.expanduser('~'),'.antmonitor.cfg')):
+    if os.path.isfile(os.path.join(os.path.expanduser('~'), '.antmonitor.cfg')):
         try:
-            json.load(open(os.path.join(os.path.expanduser('~'),'.antmonitor.cfg')))
+            json.load(open(os.path.join(os.path.expanduser('~'), '.antmonitor.cfg')))
         except ValueError as e:
             raise click.UsageError(str(e) + '\nPlease make sure your \'~/.antmonitor.cfg\' is valid JSON')
     else:
@@ -93,7 +94,7 @@ def Validate():
     """
     Check Values in Config
     """
-    config = json.load(open(os.path.join(os.path.expanduser('~'),'.antmonitor.cfg')))
+    config = json.load(open(os.path.join(os.path.expanduser('~'), '.antmonitor.cfg')))
 
     # Miners
     try:
@@ -109,7 +110,7 @@ def Validate():
     if len(config['miners']['antminers']) is 0:
         raise click.BadParameter('antminers\n\nYou haven\'t specified any antminers\nPlease add the IP or Hostnames to your \'~/.antmonitor.cfg\'')
 
-    #Creds
+    # Creds
     try:
         config['credentials']
     except KeyError:
@@ -135,7 +136,7 @@ def Validate():
     except KeyError:
         raise click.BadParameter('password\n\nYou haven\'t specified a password for the antminer ui\nPlease add this section to your \'~/.antmonitor.cfg\'')
 
-    #Alert
+    # Alert
     try:
         config['alert']
     except KeyError:
@@ -143,7 +144,7 @@ def Validate():
 
     try:
         config['alert']['notify']
-        if config['alert']['notify'] in [ True, 'true' ]:
+        if config['alert']['notify'] in [True, 'true']:
             try:
                 config['alert']['snstopic']
             except KeyError:
@@ -151,7 +152,7 @@ def Validate():
     except KeyError:
         raise click.BadParameter('notify\n\nYou haven\'t specified a notification setting\nPlease add this section to your \'~/.antmonitor.cfg\'')
 
-    #Threshold
+    # Threshold
     try:
         config['threshold']
     except KeyError:

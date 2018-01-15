@@ -5,6 +5,7 @@ from alert import SendAlert
 from check import AllCheck, AsicCheck, HashCheck, MemoryCheck, PoolCheck, TempCheck
 import click
 
+
 @click.group()
 @click.option('--alert', '-a', is_flag=True, help="Send an alert if threshold is passed")
 @click.option('--cron', '-c', is_flag=True, help="Only log if a threshold is passed")
@@ -18,6 +19,7 @@ def main(alert, cron, quiet):
     context.meta['cron'] = cron
     context.meta['quiet'] = quiet
     Validate()
+
 
 @main.command('temp', short_help="Check the temperature is above given temp")
 def temp():
@@ -36,6 +38,7 @@ def memory():
         if result:
             click.echo(result)
 
+
 @main.command('pool', short_help="Check if Active Pool is what you expect it to be")
 def pool():
     miners = GetMiners()
@@ -43,6 +46,7 @@ def pool():
         result = PoolCheck(m)
         if result:
             click.echo(result)
+
 
 @main.command('hashes', short_help="Check if number of GH/s is below certain number")
 def hashes():
@@ -52,6 +56,7 @@ def hashes():
         if result:
             click.echo(result)
 
+
 @main.command('asic', short_help="Checks the ASIC status if any `o` are `x`")
 def asic():
     miners = GetMiners()
@@ -60,6 +65,7 @@ def asic():
         if result:
             click.echo(result)
 
+
 @main.command('all', short_help="Run all checks")
 def all():
     miners = GetMiners()
@@ -67,6 +73,7 @@ def all():
         result = AllCheck(m)
         if result:
             click.echo(result)
+
 
 @main.command('config', short_help="Creates a ~/.antmonitor.cfg file")
 def config():
@@ -98,6 +105,7 @@ def config():
         Hashes=hashes
     )
     click.echo(creation)
+
 
 if __name__ == '__main__':
     main()

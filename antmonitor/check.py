@@ -23,7 +23,7 @@ def TempCheck(Miner):
             sys.exit(1)
         else:
             alert = "Temperate too high for " + Miner + ". Received " + str(temp) + "."
-            #SendAlert(alert)
+            # SendAlert(alert)
             return alert
     else:
         if cli_cron or cli_quiet:
@@ -51,7 +51,7 @@ def MemoryCheck(Miner):
             sys.exit(1)
         else:
             alert = "Free Memory is too low for " + Miner + ". Received " + str(memory) + "%."
-            #SendAlert(alert)
+            # SendAlert(alert)
             return alert
     else:
         if cli_cron or cli_quiet:
@@ -79,7 +79,7 @@ def PoolCheck(Miner):
             sys.exit(1)
         else:
             alert = "Active Pool is not the desired pool for " + Miner + ". Received " + str(pool) + "."
-            #SendAlert(alert)
+            # SendAlert(alert)
             return alert
     else:
         if cli_cron or cli_quiet:
@@ -107,7 +107,7 @@ def HashCheck(Miner):
             sys.exit(1)
         else:
             alert = "GH/s is low for " + Miner + ". Received " + str(hashes) + "."
-            #SendAlert(alert)
+            # SendAlert(alert)
             return alert
     else:
         if cli_cron or cli_quiet:
@@ -131,7 +131,7 @@ def AsicCheck(Miner):
             sys.exit(1)
         else:
             alert = "Hashboard issue for " + Miner + ". Received " + str(asic) + "."
-            #SendAlert(alert)
+            # SendAlert(alert)
             return alert
     else:
         if cli_cron or cli_quiet:
