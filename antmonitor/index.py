@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
-from utils import CreateConfig, GetConfig, GetMiners, Validate
-from alert import SendAlert
-from check import AllCheck, AsicCheck, HashCheck, MemoryCheck, PoolCheck, TempCheck
+from .utils import CreateConfig, GetConfig, GetMiners, Validate
+from .alert import SendAlert
+from .check import AllCheck, AsicCheck, HashCheck, MemoryCheck, PoolCheck, TempCheck
 import click
 
 

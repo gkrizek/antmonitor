@@ -1,4 +1,4 @@
-from utils import GetConfig
+from .utils import GetConfig
 import click
 
 

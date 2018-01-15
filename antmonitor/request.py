@@ -1,6 +1,6 @@
 import click
 import requests
-from utils import GetConfig
+from .utils import GetConfig
 
 
 def GetContent(Miner, Page):

@@ -1,8 +1,8 @@
-from alert import SendAlert
+from .alert import SendAlert
 import click
-from request import GetContent
+from .request import GetContent
 import sys
-from utils import GetConfig
+from .utils import GetConfig
 
 
 def TempCheck(Miner):
