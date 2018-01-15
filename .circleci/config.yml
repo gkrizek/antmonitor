@@ -15,4 +15,4 @@ jobs:
       - run:
           name: run tests
           command: |
-            pycodestyle .
+            pycodestyle . --ignore E501
