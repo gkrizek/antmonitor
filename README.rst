@@ -13,7 +13,7 @@ antmonitor
 
 .. raw:: html
 
-    <img src="http://krizek.io/files/antmonitor.png" width="400px">
+    <img src="http://krizek.io/files/antmonitor.png" width="300px">
 
 About
 -----
