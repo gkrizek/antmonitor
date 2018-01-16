@@ -105,9 +105,9 @@ The options include:
 
       - memory: Notify if Free Memory is less than this percent [default is 10]
 
-      - pool: Notify if active pool is other than this pool URL.
+      - pool: Enable or disable Dead pool notification
 
-      - hashes: Notify if the GH/s is less than this number
+      - hashes: Notify if the GH/s is less than this integer
 
 
 *Example Configuration:*
@@ -139,7 +139,7 @@ The options include:
     "threshold": {
       "temp": "85",
       "memory": "5",
-      "pool": "youpoolurl",
+      "pool": true
       "hashes": "12000"
     }
   }

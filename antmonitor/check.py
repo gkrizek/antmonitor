@@ -9,11 +9,10 @@ from .utils import GetConfig
 def TempCheck(Miner):
     content = GetContent(Miner, "minerStatus")
 
-    temp = 90
     try:
         config_temp = GetConfig('threshold,temp')
     except KeyError as e:
-        raise click.UsageError('Configuration Failure\nCould not find temperature threshold')
+        config_temp = 90
 
     context = click.get_current_context()
     cli_cron = context.meta['cron']
@@ -37,11 +36,11 @@ def MemoryCheck(Miner):
     """
     Get Memory Value
     """
-    memory = 20
+
     try:
         config_memory = GetConfig('threshold,memory')
     except KeyError as e:
-        raise click.UsageError('Configuration Failure\nCould not find memory threshold')
+        memory = 10
 
     context = click.get_current_context()
     cli_cron = context.meta['cron']
@@ -65,28 +64,28 @@ def PoolCheck(Miner):
     """
     Get Pool Value
     """
-    pool = "abc123"
     try:
         config_pool = GetConfig('threshold,pool')
     except KeyError as e:
-        raise click.UsageError('Configuration Failure\nCould not find pool threshold')
+        config_pool = True
 
     context = click.get_current_context()
     cli_cron = context.meta['cron']
     cli_quiet = context.meta['quiet']
 
-    if pool is not config_pool:
-        if cli_quiet:
-            sys.exit(1)
+    if config_pool:
+        if pool is not config_pool:
+            if cli_quiet:
+                sys.exit(1)
+            else:
+                alert = "Pool is Dead on " + Miner + ". Received " + str(pool) + "."
+                # SendAlert(alert)
+                return alert
         else:
-            alert = "Active Pool is not the desired pool for " + Miner + ". Received " + str(pool) + "."
-            # SendAlert(alert)
-            return alert
-    else:
-        if cli_cron or cli_quiet:
-            return
-        else:
-            return "Active Pool is OK for " + Miner + ". Received " + str(pool) + "."
+            if cli_cron or cli_quiet:
+                return
+            else:
+                return "All pools are Active on " + Miner + "."
 
 
 def HashCheck(Miner):
