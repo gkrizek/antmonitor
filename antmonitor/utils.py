@@ -4,7 +4,7 @@ import json
 import os
 
 
-def CreateConfig(Miners, Key, Secret, Username, Password, Notify, SNS, Temp, Mem, Pool, Hashes):
+def CreateConfig(Miners, Key, Secret, Username, Password, Notify, SNS, Temp, Mem, Pool, Hashes, Fan):
     miners = Miners.split(',')
     if Notify:
         notify = "true"
@@ -32,7 +32,8 @@ def CreateConfig(Miners, Key, Secret, Username, Password, Notify, SNS, Temp, Mem
             "temp": Temp,
             "memory": Mem,
             "pool": Pool,
-            "hashes": Hashes
+            "hashes": Hashes,
+            "fan": Fan
         }
     }
     try:

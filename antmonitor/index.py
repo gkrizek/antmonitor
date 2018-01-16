@@ -88,8 +88,9 @@ def config():
     sns_topic = click.prompt('What is your AWS SNS Topic ARN? (type "none" if you wish not to specify)', type=str)
     temp = click.prompt('What is your max temperature threshold?', type=int, default=90)
     memory = click.prompt('What is your minimum free memory threshold?', type=int, default=10)
-    pool = click.prompt('What is the URL for your expected active pool?', type=str)
+    pool = click.confirm('Do you want to alert when a pool goes Dead?')
     hashes = click.prompt('What is your minimum acceptable GH/s threshold?', type=int)
+    fan = click.prompt('What is your minimum acceptable Fan RPM threshold?', type=int)
 
     creation = CreateConfig(
         Miners=miners,
@@ -102,6 +103,7 @@ def config():
         Temp=temp,
         Mem=memory,
         Pool=pool,
-        Hashes=hashes
+        Hashes=hashes,
+        Fan=fan
     )
     click.echo(creation)
