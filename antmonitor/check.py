@@ -116,6 +116,34 @@ def HashCheck(Miner):
             return "GH/s is OK for " + Miner + ". Received " + str(hashes) + "."
 
 
+def FanCheck(Miner):
+    """
+    Get Fan Value
+    """
+    rpm = "1300"
+    try:
+        config_fan = GetConfig('threshold,fan')
+    except KeyError as e:
+        config_fan = 2000
+
+    context = click.get_current_context()
+    cli_cron = context.meta['cron']
+    cli_quiet = context.meta['quiet']
+
+    if rpm < config_fan:
+        if cli_quiet:
+            sys.exit(1)
+        else:
+            alert = "Fan speed is low for " + Miner + ". Received " + str(rpm) + "."
+            # SendAlert(alert)
+            return alert
+    else:
+        if cli_cron or cli_quiet:
+            return
+        else:
+            return "Fan speed is OK for " + Miner + ". Received " + str(rpm) + "."
+
+
 def AsicCheck(Miner):
     """
     Get ASIC Value
@@ -149,6 +177,8 @@ def AllCheck(Miner):
     print(pool)
     hashes = HashCheck(Miner)
     print(hashes)
+    fan = FanCheck(Miner)
+    print(fan)
     asic = AsicCheck(Miner)
     print(asic)
     return "---"

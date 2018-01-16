@@ -109,6 +109,8 @@ The options include:
 
       - hashes: Notify if the GH/s is less than this integer
 
+      - fan: Notify if the r/min drops below speed [default is 2000]
+
 
 *Example Configuration:*
 
@@ -140,7 +142,8 @@ The options include:
       "temp": "85",
       "memory": "5",
       "pool": true
-      "hashes": "12000"
+      "hashes": "12000",
+      "fan": "2000"
     }
   }
 
