@@ -11,6 +11,8 @@ antmonitor
 .. image:: https://img.shields.io/pypi/l/antmonitor.svg
     :target: https://opensource.org/licenses/MIT
 
+.. image:: antmonitor.png
+
 About
 -----
 
