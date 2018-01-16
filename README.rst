@@ -11,7 +11,9 @@ antmonitor
 .. image:: https://img.shields.io/pypi/l/antmonitor.svg
     :target: https://opensource.org/licenses/MIT
 
-.. image:: antmonitor.png
+.. raw:: html
+
+    <img src="http://krizek.io/files/antmonitor.png" width="400px">
 
 About
 -----
